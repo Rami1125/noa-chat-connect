@@ -69,8 +69,8 @@ export function MessageBubble({ message }: { message: Message }) {
         className={cn(
           "wa-pop relative max-w-[85%] rounded-lg px-2.5 py-1.5 text-[14.5px] leading-relaxed shadow-sm sm:max-w-[75%] md:max-w-[62%]",
           isOut
-            ? "rounded-bs-none bg-wa-bubble-out text-wa-bubble-text"
-            : "rounded-be-none bg-wa-bubble-in text-wa-bubble-text",
+            ? "rounded-es-none bg-wa-bubble-out text-wa-bubble-text"
+            : "rounded-ee-none bg-wa-bubble-in text-wa-bubble-text",
         )}
       >
         {message.card ? <OrderCard card={message.card} /> : null}
