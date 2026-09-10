@@ -22,11 +22,7 @@ export function ChatHeader({ title, status, onBack }: ChatHeaderProps) {
         </button>
       ) : null}
 
-      <img
-        src={NOA_AVATAR}
-        alt="נועה AI"
-        className="size-10 shrink-0 rounded-full object-cover"
-      />
+      <img src={NOA_AVATAR} alt="נועה AI" className="size-10 shrink-0 rounded-full object-cover" />
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-[15px] font-medium text-wa-bubble-text">{title}</p>

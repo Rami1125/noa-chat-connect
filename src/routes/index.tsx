@@ -14,13 +14,13 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "נועה AI — ח. סבן חומרי בניין בע\"מ" },
+      { title: 'נועה AI — ח. סבן חומרי בניין בע"מ' },
       {
         name: "description",
         content:
           "מוקד התיאום החכם של ח. סבן חומרי בניין: הזמנת מכולות, הצבה, החלפה והוצאה — הכל בצ'אט אחד עם נועה AI.",
       },
-      { property: "og:title", content: "נועה AI — ח. סבן חומרי בניין בע\"מ" },
+      { property: "og:title", content: 'נועה AI — ח. סבן חומרי בניין בע"מ' },
       {
         property: "og:description",
         content: "צ'אט חכם לתיאום מכולות ומשימות שטח בזמן אמת.",
@@ -153,7 +153,10 @@ function ChatPage() {
             onBack={() => setMobileChatOpen(false)}
           />
 
-          <div ref={scrollRef} className="wa-doodle wa-scroll flex-1 overflow-y-auto px-3 py-4 sm:px-8">
+          <div
+            ref={scrollRef}
+            className="wa-doodle wa-scroll flex-1 overflow-y-auto px-3 py-4 sm:px-8"
+          >
             <div className="mx-auto flex max-w-4xl flex-col gap-2">
               <p className="mx-auto mb-2 flex items-center gap-1.5 rounded-lg bg-wa-panel/80 px-3 py-1.5 text-center text-[11px] text-wa-meta backdrop-blur">
                 <Lock className="size-3" />

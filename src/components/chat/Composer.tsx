@@ -81,7 +81,9 @@ export function Composer({ onSend, disabled }: ComposerProps) {
       return;
     }
     if (id === "location") {
-      onSend("📍 שיתוף מיקום: https://waze.com/ul?q=%D7%94%D7%90%D7%95%D7%A8%D7%92%D7%99%D7%9D%2030%20%D7%97%D7%95%D7%9C%D7%95%D7%9F&navigate=yes");
+      onSend(
+        "📍 שיתוף מיקום: https://waze.com/ul?q=%D7%94%D7%90%D7%95%D7%A8%D7%92%D7%99%D7%9D%2030%20%D7%97%D7%95%D7%9C%D7%95%D7%9F&navigate=yes",
+      );
       return;
     }
     onSend("📷 נשלחה תמונה מהמצלמה");
@@ -109,7 +111,7 @@ export function Composer({ onSend, disabled }: ComposerProps) {
               className="w-[3px] flex-1 rounded-full bg-wa-green"
               style={{
                 height: `${30 + ((index * 37) % 60)}%`,
-                animation: `wa-wave ${0.6 + ((index % 5) * 0.12)}s ${index * 0.03}s infinite ease-in-out`,
+                animation: `wa-wave ${0.6 + (index % 5) * 0.12}s ${index * 0.03}s infinite ease-in-out`,
               }}
             />
           ))}
