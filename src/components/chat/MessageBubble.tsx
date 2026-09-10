@@ -64,13 +64,13 @@ export function MessageBubble({ message }: { message: Message }) {
   const isOut = message.author === "me";
 
   return (
-    <div className={cn("flex w-full", isOut ? "justify-start" : "justify-end")}>
+    <div className={cn("flex w-full", isOut ? "justify-end" : "justify-start")}>
       <div
         className={cn(
           "wa-pop relative max-w-[85%] rounded-lg px-2.5 py-1.5 text-[14.5px] leading-relaxed shadow-sm sm:max-w-[75%] md:max-w-[62%]",
           isOut
-            ? "rounded-es-none bg-wa-bubble-out text-wa-bubble-text"
-            : "rounded-ee-none bg-wa-bubble-in text-wa-bubble-text",
+            ? "rounded-ee-none bg-wa-bubble-out text-wa-bubble-text"
+            : "rounded-es-none bg-wa-bubble-in text-wa-bubble-text",
         )}
       >
         {message.card ? <OrderCard card={message.card} /> : null}
@@ -86,8 +86,8 @@ export function MessageBubble({ message }: { message: Message }) {
 
 export function TypingIndicator() {
   return (
-    <div className="flex justify-end">
-      <div className="flex items-center gap-2 rounded-lg rounded-ee-none bg-wa-bubble-in px-3 py-2.5 shadow-sm">
+    <div className="flex justify-start">
+      <div className="flex items-center gap-2 rounded-lg rounded-es-none bg-wa-bubble-in px-3 py-2.5 shadow-sm">
         <span className="text-xs text-wa-meta">נועה מקלידה</span>
         <span className="flex items-center gap-1">
           {[0, 1, 2].map((index) => (
