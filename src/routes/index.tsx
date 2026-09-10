@@ -69,7 +69,7 @@ function ChatPage() {
     if (element) element.scrollTop = element.scrollHeight;
   }, [messages, typing]);
 
-  const activeConversation = CONVERSATIONS.find((c) => c.id === activeId) ?? CONVERSATIONS[0];
+  const activeConversation = CONVERSATIONS.find((c) => c.id === activeId) ?? CONVERSATIONS[0]!;
 
   const handleSend = useCallback(
     async (text: string) => {
