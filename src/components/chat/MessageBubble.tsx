@@ -87,7 +87,7 @@ export function MessageBubble({ message }: { message: Message }) {
 export function TypingIndicator() {
   return (
     <div className="flex justify-end">
-      <div className="flex items-center gap-2 rounded-lg rounded-be-none bg-wa-bubble-in px-3 py-2.5 shadow-sm">
+      <div className="flex items-center gap-2 rounded-lg rounded-ee-none bg-wa-bubble-in px-3 py-2.5 shadow-sm">
         <span className="text-xs text-wa-meta">נועה מקלידה</span>
         <span className="flex items-center gap-1">
           {[0, 1, 2].map((index) => (
