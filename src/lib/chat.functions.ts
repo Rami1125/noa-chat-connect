@@ -1,6 +1,6 @@
 import { askNoaBrain } from './gemini';
 
-const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL || 'https://hook.eu1.make.com/j1kfxfn5y4goe1lud3dk1phkw4bkjvyr';
+const MAKE_WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL || 'https://hook.eu1.make.com/yvywlj4kpryenbte86oedh4826glhb3u';
 
 export interface SendMessagePayload {
   chatId: string;
@@ -8,12 +8,11 @@ export interface SendMessagePayload {
   messageText: string;
 }
 
-export async function handleIncomingUserMessage(payload: SendMessagePayload) {
+export async function sendMessageToMake(payload: SendMessagePayload) {
   const { chatId, senderName, messageText } = payload;
 
   console.log(`[Chat Action] התקבלה הודעה מ-${senderName}: ${messageText}`);
 
-  // 1. שידור ההודעה במקביל ל-Make.com (לעדכון גיליונות ושיגור לוואטסאפ)
   const webhookPromise = fetch(MAKE_WEBHOOK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -27,10 +26,8 @@ export async function handleIncomingUserMessage(payload: SendMessagePayload) {
     })
   }).catch(err => console.warn('[Make Webhook Error]:', err.message));
 
-  // 2. הפעלת מוח Gemini להפקת תשובה חכמה של נועה בזמן אמת
   const aiReplyPromise = askNoaBrain(messageText, senderName);
 
-  // המתנה לתשובת ה-AI
   const [_, aiReply] = await Promise.all([webhookPromise, aiReplyPromise]);
 
   return {
