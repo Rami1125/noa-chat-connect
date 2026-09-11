@@ -14,7 +14,92 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      conversations: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          id: string
+          is_group: boolean
+          last_message: string | null
+          last_message_at: string
+          muted: boolean
+          name: string
+          phone: string | null
+          slug: string
+          unread: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          is_group?: boolean
+          last_message?: string | null
+          last_message_at?: string
+          muted?: boolean
+          name: string
+          phone?: string | null
+          slug: string
+          unread?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          is_group?: boolean
+          last_message?: string | null
+          last_message_at?: string
+          muted?: boolean
+          name?: string
+          phone?: string | null
+          slug?: string
+          unread?: number
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          author: string
+          body: string
+          conversation_id: string
+          created_at: string
+          external_id: string | null
+          id: string
+          sender_name: string
+          sender_phone: string | null
+          status: string
+        }
+        Insert: {
+          author?: string
+          body: string
+          conversation_id: string
+          created_at?: string
+          external_id?: string | null
+          id?: string
+          sender_name?: string
+          sender_phone?: string | null
+          status?: string
+        }
+        Update: {
+          author?: string
+          body?: string
+          conversation_id?: string
+          created_at?: string
+          external_id?: string | null
+          id?: string
+          sender_name?: string
+          sender_phone?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
