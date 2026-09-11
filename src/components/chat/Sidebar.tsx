@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Search, MessageSquarePlus, MoreVertical, BellOff, Moon, Sun } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { CONVERSATIONS, type Conversation } from "@/lib/chat-data";
+import { type Conversation } from "@/lib/chat-data";
 
 type Tab = "all" | "unread" | "groups";
 
@@ -13,6 +13,7 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 type SidebarProps = {
+  items: Conversation[];
   activeId: string;
   onSelect: (id: string) => void;
   isDark: boolean;
