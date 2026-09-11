@@ -5,6 +5,7 @@ import { ACTION_LABELS, type Message, type TaskCard } from "@/lib/chat-data";
 
 function Ticks({ status }: { status: Message["status"] }) {
   if (!status) return null;
+  if (status === "pending") return <Clock className="size-3.5 text-wa-meta" />;
   if (status === "sent") return <Check className="size-4 text-wa-meta" />;
   return (
     <CheckCheck className={cn("size-4", status === "read" ? "text-wa-tick" : "text-wa-meta")} />
