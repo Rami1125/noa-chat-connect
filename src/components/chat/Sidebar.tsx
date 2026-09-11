@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Search, MessageSquarePlus, MoreVertical, BellOff, Moon, Sun } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { CONVERSATIONS, type Conversation } from "@/lib/chat-data";
+import { type Conversation } from "@/lib/chat-data";
 
 type Tab = "all" | "unread" | "groups";
 
@@ -13,6 +13,7 @@ const TABS: { id: Tab; label: string }[] = [
 ];
 
 type SidebarProps = {
+  items: Conversation[];
   activeId: string;
   onSelect: (id: string) => void;
   isDark: boolean;
@@ -38,18 +39,25 @@ function Avatar({ conversation }: { conversation: Conversation }) {
   );
 }
 
-export function Sidebar({ activeId, onSelect, isDark, onToggleTheme, className }: SidebarProps) {
+export function Sidebar({
+  items,
+  activeId,
+  onSelect,
+  isDark,
+  onToggleTheme,
+  className,
+}: SidebarProps) {
   const [tab, setTab] = useState<Tab>("all");
   const [query, setQuery] = useState("");
 
   const conversations = useMemo(() => {
-    return CONVERSATIONS.filter((c) => {
+    return items.filter((c) => {
       if (tab === "unread" && c.unread === 0) return false;
-      if (tab === "groups" && c.kind !== "group") return false;
+      if (tab === "groups" && !c.isGroup) return false;
       if (query.trim() && !c.name.includes(query.trim())) return false;
       return true;
     });
-  }, [tab, query]);
+  }, [items, tab, query]);
 
   return (
     <aside
